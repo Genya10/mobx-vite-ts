@@ -24,3 +24,5 @@ class CounterStore {
         this.count -= value
     }
 }
+
+export default new CounterStore

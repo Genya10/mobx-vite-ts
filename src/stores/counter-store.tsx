@@ -25,4 +25,5 @@ class CounterStore {
     }
 }
 
-export default new CounterStore
+export  default CounterStore
+//export default new CounterStore

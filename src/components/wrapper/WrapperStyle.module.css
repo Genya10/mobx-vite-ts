@@ -1,0 +1,10 @@
+.wrapper {
+    margin-left: 200px;
+    border: 2px red  solid;
+    padding: 20px 150px;
+}
+.counter {
+    border: 2px blue solid;
+    padding: 10px 30px;
+    margin-bottom: 10px;
+}

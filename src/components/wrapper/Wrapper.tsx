@@ -1,13 +1,13 @@
-import { Counter } from "../counter/Counter"
+//import { Counter } from "../counter/Counter"
 import { observer } from "mobx-react-lite"
-import CounterStore from "../../stores/counter-store"
+//import CounterStore from "../../stores/counter-store"
 import PostsStore from "../../stores/posts-store"
-import cl from './WrapperStyle.module.css'
+//import cl from './WrapperStyle.module.css'
 import { useEffect } from "react"
 
-const counter1 = new CounterStore()
+/*const counter1 = new CounterStore()
 const counter2 = new CounterStore()
-const counter3 = new CounterStore()
+const counter3 = new CounterStore()*/
 
 export const Wrapper = observer(()=> {
     const {getPostsAction, posts} = PostsStore
@@ -16,21 +16,17 @@ export const Wrapper = observer(()=> {
         getPostsAction()
     },[])
 
-    if(posts?.state === 'pending'){
-        return <div>loading</div>
+    if(!posts){
+        return null
     }
 
-    if(posts?.state === 'rejected'){
-        return <div>error</div>
-    }
-    
-    console.log(posts, 'posts')
-
-    return (
-     <h2>
-     {posts?.value?.length ? posts?.value[0].body : 'No posts available'}
-     </h2>
-    )
+    return posts.case({
+     pending:() => <div>Loading...</div>,
+     rejected:() => <div>Error</div>,
+     fulfilled:(value) =>(
+        <h2>{value[0].body}</h2>
+     )
+    })
 })
 
 /*

@@ -28,7 +28,7 @@ export const Wrapper = observer(()=> {
 
     return (
      <h2>
-     {posts?.value[0].body}
+     {posts?.value?.length ? posts?.value[0].body : 'No posts available'}
      </h2>
     )
 })

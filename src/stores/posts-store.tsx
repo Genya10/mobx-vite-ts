@@ -3,7 +3,7 @@ import { getPosts, PropsPosts} from '../api/getPosts'
 import { fromPromise, IPromiseBasedObservable } from "mobx-utils"
 
 class PostsStore {
-    posts?: IPromiseBasedObservable<PropsPosts[]>
+    posts?: IPromiseBasedObservable<PropsPosts[]> | undefined = undefined
 
     constructor(){
         makeAutoObservable(this)

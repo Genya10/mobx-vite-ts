@@ -4,13 +4,14 @@ import { observer } from "mobx-react-lite"
 import PostsStore from "../../stores/posts-store"
 //import cl from './WrapperStyle.module.css'
 import { useEffect } from "react"
+import { useStores } from "../../stores/root-store-context"
 
 /*const counter1 = new CounterStore()
 const counter2 = new CounterStore()
 const counter3 = new CounterStore()*/
 
 export const Wrapper = observer(()=> {
-    const {getPostsAction, posts} = PostsStore
+    const {post:{getPostsAction, posts}} = useStores()
 
     useEffect(()=> {
         getPostsAction()
